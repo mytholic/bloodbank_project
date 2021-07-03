@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<body style="background-color:paleturquoise;">
+<div class="container" style="text-align: center;">
+<form action="/complete/" method="POST">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" class="btn btn-outline-success" value="SUBMIT">
+</form>
+</div>
+</body>
+{% endblock  %}

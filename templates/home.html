@@ -1,0 +1,43 @@
+{% load static %}
+<html>
+    <head><link rel="stylesheet" href="{% static 'style.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid" style="margin-left: 1050px;">
+<form class="d-flex" method="POST" action="/login/">
+    {% csrf_token %}
+    <input type="text" name="user" placeholder="USERNAME" required>
+    <input type="password" name="pass" placeholder="PASSWORD" style="margin-left: 10px;" required>
+    <button class="btn btn-outline-success" type="submit" style="margin-left: 10px;">Login</button>
+  </form>
+  </div>
+  </nav>
+
+<div class="container " style="background-color: seashell; height: 700px; width: 500px; margin-right: 0px; margin-top: 0px;" >
+
+    <form action="/register/" method="POST">
+        
+        <br>
+        {% csrf_token %}
+        <div style="margin-top: 30px;">
+        <h1 style="text-align: center;">Register</h1><br><br>
+        <label for="username" style="margin-right: 95px;">USERNAME</label><input type="text" placeholder="USERNAME" name="username" id="username"><BR><br>
+        <label for="pass" style="margin-right: 95px;">PASSWORD</label><input type="password" placeholder="PASSWORD" name="password" id="pass"><BR><br>
+        <label for="con" style="margin-right: 20px;">CONFRIM PASSWORD</label><input type="password" placeholder="CONFIRM PASSWORD" name="confirm_password" id="con"><BR><br>
+        <label for="add" style="margin-right: 100px;">ADDRESS</label><textarea placeholder="ADDRESS" name="address" id="add" style="width: 300px; height: 100px;"></textarea><BR><br>
+        SEX <label for="male" style="margin-left: 140px; margin-right: 10PX;">MALE</label><input type="radio" id="male" name="sex" value="male"> 
+        <label for="female" style="margin-right: 20px;">FEMALE</label><input type="radio" id="female" name="sex" value="female"> <br><br>
+        <label for="num" style="margin-right: 50px;">PHONE NUMBER</label><input type="number" id="num" placeholder="NUMBER" name="number"><br><br>
+        <input type="submit" value="REGISTER" class="btn btn-success" style="margin-left: 170px;">
+       
+        </div>
+    </form>
+    <p>
+        {% for message in messages %}
+        <h2>{{message}}</h2>
+        {% endfor %}
+    </p>
+</div>
+</body>
+</html>
